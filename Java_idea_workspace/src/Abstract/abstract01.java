@@ -36,10 +36,10 @@ public class abstract01
     static void main(String[] args)
     {
         //new A();
-        Manager A = new Manager("Leo",1,114514,0.20);
-        CommonEmployee B = new CommonEmployee("Xu",2,4514);
-        A.work();
-        B.work();
+        Manager leo = new Manager("Leo", 1, 1145, 0.20);
+        CommonEmployee xu = new CommonEmployee("Xu", 2, 4451);
+        leo.work();
+        xu.work();
     }
 }
 
