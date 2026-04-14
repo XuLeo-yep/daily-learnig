@@ -388,7 +388,20 @@ public class GourmetCoffee  {
      */
     public void displayNumberOfOrders(Product product) {
 
-        /* PLACE YOUR CODE HERE */
+       int count = 0;
+
+        Iterator<Order> orderIterator = sales.iterator();
+
+       while (orderIterator.hasNext()){
+           Order currentOrder = orderIterator.next();
+
+           if(currentOrder.getItem(product)!=null){
+            count++;
+           }
+       }
+
+        System.out.println("Product :"+ product.toString() + "exits in " +
+                count + "orders");
 
     }
 
@@ -398,7 +411,9 @@ public class GourmetCoffee  {
      */
     public void displayTotalQuantityOfProducts() {
 
-        /* PLACE YOUR CODE HERE */
+        int total = catalog.getNumberOfProducts();
+        System.out.println("There are " + total +
+                " products in the catalog.");
 
     }
 
