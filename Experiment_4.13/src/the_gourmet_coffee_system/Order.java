@@ -38,7 +38,7 @@ public class Order implements Iterable<OrderItem>{
     public double getTotalCost(){
         double total = 0.0;
         for(OrderItem item : items) {
-            total += item.getValue()* item.getQuantity();
+            total += item.getValue();
         }
         return total;
     }
