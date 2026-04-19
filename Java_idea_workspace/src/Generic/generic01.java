@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class generic01
 {
-    static void main(String[] args)
+         static void main(String[] args)
     {
 
     }
