@@ -26,15 +26,15 @@ public class GourmetCoffee {
     }
 
     private int getChoice(){
-        return 0;
+
     }
 
     private void setSalesFormatter(SalesFormatter newFormatter){
-
+        this.salesFormatter = newFormatter;
     }
 
     private void displaySales(){
-
+        this.salesFormatter.formatSales( sales);
     }
 
     private void run(){
