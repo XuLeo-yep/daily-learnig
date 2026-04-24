@@ -1,14 +1,18 @@
 public class PlainTextSalesFormatter implements SalesFormatter{
 
-    private static PlainTextSalesFormatter singletonInstance;
+    private static PlainTextSalesFormatter plainTextSalesFormatter;
 
-    static public PlainTextSalesFormatter getSingletonInstance(){
-        return singletonInstance;
+    public static PlainTextSalesFormatter getPlainTextSalesFormatter() {
+        if(plainTextSalesFormatter == null){
+            plainTextSalesFormatter = new PlainTextSalesFormatter();
+        }
+        return plainTextSalesFormatter;
     }
 
     private PlainTextSalesFormatter() {
-    singletonInstance = new PlainTextSalesFormatter();
+            plainTextSalesFormatter = new PlainTextSalesFormatter();
     }
+
 
     public String formatSales(Sales sales){
         String result = "";

@@ -1,12 +1,15 @@
 public class HTMLSalesFormatter implements SalesFormatter{
-    private static HTMLSalesFormatter singletonInstance;
+    private static HTMLSalesFormatter HTMLFormatter;
 
-    static public HTMLSalesFormatter getSingletonInstance() {
-        return singletonInstance;
+    public static HTMLSalesFormatter getHTMLFormatter() {
+        if (HTMLFormatter == null){
+            HTMLFormatter = new HTMLSalesFormatter();
+        }
+        return HTMLFormatter;
     }
 
     private  HTMLSalesFormatter(){
-        singletonInstance = new HTMLSalesFormatter();
+        HTMLFormatter = new HTMLSalesFormatter();
     }
 
     public String formatSales(Sales sales) {

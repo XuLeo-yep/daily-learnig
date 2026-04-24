@@ -1,12 +1,15 @@
 public class XMLSalesFormatter implements SalesFormatter{
-    static private XMLSalesFormatter singletonInstance;
+    static private XMLSalesFormatter XMLFormatter;
 
-    public static XMLSalesFormatter getSingletonInstance() {
-        return singletonInstance;
+    public static XMLSalesFormatter getXMLFormatter() {
+        if (XMLFormatter == null){
+            XMLFormatter = new XMLSalesFormatter();
+        }
+        return XMLFormatter;
     }
 
     public XMLSalesFormatter() {
-        singletonInstance = new XMLSalesFormatter();
+        XMLFormatter = new XMLSalesFormatter();
     }
 
     public String formatSales(Sales sales) {

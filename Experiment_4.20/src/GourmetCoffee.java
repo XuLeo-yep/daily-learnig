@@ -1,79 +1,4 @@
-//import java.io.IOException;
-//import java.util.Scanner;
-//
-//public class GourmetCoffee {
-//    private Sales sales;
-//
-//    private SalesFormatter salesFormatter;
-//
-//    static void main(String[] args) {
-//
-//    }
-//
-//    private GourmetCoffee(){
-//        sales = new Sales();
-//        salesFormatter = new SalesFormatter() {
-//            @Override
-//            public String formatSales(Sales sales) {
-//                return "";
-//            }
-//        };
-//    }
-//
-//    private Catalog loadCatalog(){
-//        return null;
-//    }
-//
-//    private  void loadSales(Catalog catalog){
-//
-//    }
-//
-//    private int getChoice() throws IOException {
-//        Scanner scanner = new Scanner(System.in);
-//        int choice = -1;
-//        boolean validInput = false;
-//
-//        while (!validInput){
-//            System.out.println();
-//            System.out.println("[0] Quit");
-//            System.out.println("[1] Display sales (Plain Text)");
-//            System.out.println("[2] Display sales (HTML)");
-//            System.out.println("[3] Display sales (XML)");
-//            System.out.print("choice> ");
-//
-//            String input = scanner.next();
-//
-//            try{
-//                choice = Integer.parseInt(input);
-//                if(choice >= 0 && choice<= 3){
-//                    validInput = true;
-//                }
-//                else {
-//                    System.out.println("Please enter a number between 0 and 3");
-//                }
-//            }catch (NumberFormatException e){
-//                System.out.println("Invalid input." +
-//                        "Please enter a number between 0 and 3.");
-//            }
-//            System.out.println();
-//        }
-//        return choice;
-//    }
-//
-//    private void setSalesFormatter(SalesFormatter newFormatter){
-//        this.salesFormatter = newFormatter;
-//    }
-//
-//    private void displaySales(){
-//        this.salesFormatter.formatSales( sales);
-//    }
-//
-//    private void run(){
-//
-//    }
-//}
 import java.io.*;
-import java.util.*;
 //import java.text.*;
 
 /**
@@ -120,14 +45,11 @@ public class GourmetCoffee  {
      * Constructs a <code>GourmetCoffee</code> object and
      * initializes the catalog and sales data.
      *
-     * @param initialCatalog a product catalog
      */
     private GourmetCoffee() {
 
+        this.salesFormatter = PlainTextSalesFormatter.getPlainTextSalesFormatter();
         this.sales = new Sales();
-        this.salesFormatter =
-                PlainTextSalesFormatter.getSingletonInstance();
-
         loadSales(loadCatalog());
     }
 
@@ -291,16 +213,15 @@ public class GourmetCoffee  {
      * @param newFormatter a sales formatter
      */
     private void setSalesFormatter(SalesFormatter newFormatter){
-
-        /* PLACE YOUR CODE HERE */
+        this.salesFormatter = newFormatter;
     }
 
     /**
      * Displays the sales information in the current format.
      */
     private void displaySales() {
-
-        /* PLACE YOUR CODE HERE */
+        String display = this.salesFormatter.formatSales(sales);
+        System.out.println(display);
     }
 
     /**
@@ -314,17 +235,16 @@ public class GourmetCoffee  {
         while (choice != 0)  {
 
             if (choice == 1)  {
-
-                /* PLACE YOUR CODE HERE */
-
+                setSalesFormatter(salesFormatter);
+                displaySales();
             } else if (choice == 2)  {
-
-                /* PLACE YOUR CODE HERE */
-
+                this.salesFormatter = HTMLSalesFormatter.getHTMLFormatter();
+                setSalesFormatter(salesFormatter);
+                displaySales();
             } else if (choice == 3)  {
-
-                /* PLACE YOUR CODE HERE */
-
+                this.salesFormatter = XMLSalesFormatter.getXMLFormatter();
+                setSalesFormatter(salesFormatter);
+                displaySales();
             }
 
             choice = getChoice();
